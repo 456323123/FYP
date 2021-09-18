@@ -1,0 +1,173 @@
+$agent = new Agent();
+    $browser = $agent->browser();
+
+$ip=request()->getClientIp();
+ $product = Product::wherePid($pid)->first();
+ $product_id=$product->id;
+  $agent= $request->header('User-Agent');
+ $check_if_exists=DB::table('product_statics')->where('ip', $ip)->where('product_id', $agent)->first();
+
+
+
+if(!$check_if_exists)
+{
+
+  $views=new ProductStatic();
+  $views->ip=$ip;
+  $views->product_id=$product->id;
+  $views->agent= $request->header('User-Agent');
+  $views->view=1;
+  $views->save();
+
+}else{
+//            $cuurent_time = Carbon::now();
+// $views=ProductStatic::get();
+// $updated_at=$views->updated_at;
+// $updated_at->diffInMinutes($cuurent_time);
+
+// dd($updated_at);
+ DB::table('product_statics')->where('ip', $ip)->where('agent', $agent)->increment('view');
+//  if(!$exits)
+// {
+//        DB::table('product_statics')->where('product_id', $product_id)->where('ip', $ip)->increment('view');
+// }
+//   else{
+//       DB::table('product_statics')->where('product_id', $product_id);
+//   }
+
+}
+
+
+
+
+        $check_status = 0;
+        $product = Product::wherePid($pid)->first();
+
+        $related_products = $product->user->products->take(4);
+
+
+
+
+        if(Auth::Check())
+        {
+            $check_status = Inquiry::whereBuyerId(Auth::Id())->whereProductId($product->id)->whereStatus('pending')->count();
+        }
+
+
+
+Schema::create('product_favorites_table', function (Blueprint $table) {
+            $table->id();
+              $table->foreignId('buyer_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->tinyInteger('status')->default('0');
+            $table->timestamps();
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section('js')
+<script>
+
+$(document).ready(function(){
+
+    $('.hide')
+.click(
+     function ()
+     {
+         $(this).hide();
+         $('.show').show()
+     }
+
+
+);
+
+  $(".farvt").click(function(){
+
+
+ $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+var product_id= $(".product_id").val();
+
+$.ajax({
+method:"post",
+url:"/buyer/product/farvoute",
+data:{
+'product_id':product_id,
+},
+
+success:function(response) {
+ alert.set('notifier','position', 'bottom-right');
+    alert.success(response.status);
+}
+
+
+
+});
+
+
+
+    });
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+$product_id=$request->product_id;
+        if (ProductFavorite::where('buyer_id', Auth::id())->where('product_id', $product_id)->exists()) {
+            return response()->json(['status'=>'Product all ready wishlist']);
+        } else {
+            $wishlist=new ProductFavorite();
+            $wishlist->buyer_id=Auth::id();
+            $wishlist->product_id=$product_id;
+            $wishlist->save();
+            return response()->json(['status'=>'Product add wislist']);
+        }
+
+        return view('front.product_detail', get_defined_vars());
+
+    }
