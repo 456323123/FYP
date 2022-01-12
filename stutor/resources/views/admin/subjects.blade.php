@@ -7,8 +7,8 @@ admin-dashboard
 @section('content')
 <br><br>
  <div class="card-footer">
-<form name="productAttributeForm" id="productAttributeForm" method="post" action="{{ url('subjects') }}">
-        @csrf
+<form name="productAttributeForm" id="productAttributeForm" method="get" action="{{ url('/subjects-postdata') }}" >
+
    <div class="col-md-6">
        @if(Session::has('success_message'))
  <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin-top:10px;">
@@ -19,12 +19,21 @@ admin-dashboard
 </div>
 @endif
                <div class="form-group">
-<div class="field_wrapper">
+<div class="field_wrapper ">
     <div>
+ <select style="width:200px; height:40px;"    name="course[]" required>
 
-        <input type="text" style="width:200px"    id="course_name" name="course_name[]" placeholder="course name"/>
-             <input type="text" style="width:200px"   id="subject" name="subject[]" placeholder="subject name"/>
-        <a href="javascript:void(0);" class="new" title="Add field"> Add</a>
+    <option value="">select Course</option>
+    @foreach($course as $value)
+
+
+       <option value="{{ $value->name  ?? '' }} ">{{  $value->name ?? '' }}</option>
+          @endforeach
+    </select>
+        <input type="text" style="width:200px; height:40px;"    id="course_name" name="subject[]" placeholder="course name"/>
+
+  
+        <a href="javascript:void(0)" class="new btn btn-danger" title="Add field"> Add</a>
 
     </div>
 </div>
@@ -57,18 +66,20 @@ admin-dashboard
     </tr>
   </thead>
   <tbody>
-      @foreach($new as $course)
+    @php $counter=0; @endphp
+
+      @foreach($new as $data)
     <tr>
 
 
-
+@php $counter++ @endphp
       <th scope="row">
-          {{ $course->id}}        </th>
+          {{ $counter}}</th>
       <td>
-          {{ $course->coursename }}</td>
+          {{ $data->coursename }}</td>
                 <td>
-          {{ $course->subject_name}}</td>
-                 <td><a href="{{ url('/subject/delete',$course->id)}}" class="btn btn-danger">delete</a></td>
+          {{ $data->subject_name}}</td>
+                 <td><a href="{{ url('/subject/delete',$data->id)}}" class="btn btn-danger">delete</a></td>
 
 
     </tr>
@@ -84,4 +95,44 @@ admin-dashboard
 
         </div>
 </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+ $(document).ready(function() {
+  var nmaxField = 100; //Input fields increment limitation
+var naddButton = $('.new'); //Add button selector
+var newwaper = $('.field_wrapper'); //Input field wrapper
+var nfieldHTML = `<div >
+    <select  style="width:200px;height:40px;"     name="course[]" required>
+ <option value="" >select course</option>
+    @foreach($course as $value)
+       <option value="{{  $value->name ?? ''  }}"> {{$value->name ?? '' }}</option>
+          @endforeach
+    </select>
+    <input type="text" style="width:200px;  height:40px;" name="subject[]" placeholder="course name"/> <a href="javascript:void(0)" class="remove_button btn btn-danger"> Remove</a></div>`;//New input field html
+var x = 1; //Initial field counter is 1
+
+//Once add button is clicked
+$(naddButton).click(function () {
+
+    //Check maximum number of input fields
+    if (x < nmaxField) {
+        x++; //Increment field counter
+        $(newwaper).append(nfieldHTML); //Add field html
+    }
+});
+
+//Once remove button is clicked
+$(newwaper).on('click', '.remove_button', function (e) {
+    e.preventDefault();
+    $(this).parent('div').remove(); //Remove field html
+    x--; //Decrement field counter
+});
+});
+</script>
+
+
+
+
+
 @endsection

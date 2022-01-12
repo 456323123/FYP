@@ -16,7 +16,7 @@ admin-dashboard
       <form action="{{ route('sources-index') }}"  method="post">
         {{ csrf_field() }}
       <div class="input-group float-right">
-          <input type="search" id="myInput" onkeyup="myFunction()" name="search" placeholder="Serach by name and phone number..." class="form-control mt-3" style="height: 38px;" >
+          <input type="search" id="myInput" onkeyup="()" name="search" placeholder="Serach by name and phone number..." class="form-control mt-3" style="height: 38px;" >
           <span class="input-group-prepend" class="float-right">
               <button type="submit" class="btn btn-primary mt-3" >search</button>
           </span>

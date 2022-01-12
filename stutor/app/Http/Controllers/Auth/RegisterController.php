@@ -113,7 +113,7 @@ class RegisterController extends Controller
 
            if(request()->hasfile('document')){
           $image = request()->file('document');
-          $filename = time() . '.' . $image->getClientOriginalExtension();
+          $filename = time() . '.' . $image->getClientOriginalName();
           $movedFile = $image->move('uploads/document', $filename);
           $user->document = $filename;
           $user->save();

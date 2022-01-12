@@ -56,14 +56,20 @@ class DashboardController extends Controller
 
         public function subjects(Request $request)
     {
-  if($request->isMethod('post'))
-        {
-            $data=$request->all();
-           foreach ($data['course_name'] as $key => $value) {
 
 
+          $course=Course::get();
+        $new=Subject::get();
+        return view('admin.subjects')->with(compact('new','course'));
 
-               if(!empty($value)){
+    }
+public function datapostsubjectcourst(Request $request)
+{
+
+
+ for ($i=0; $i <count($request->course); $i++)
+
+{
                 //    $attributescountSKU=Subject::where('coursename',$value)->count();
                 //    if($attributescountSKU>0)
                 //    {
@@ -77,21 +83,21 @@ class DashboardController extends Controller
 
 
                    $attributes=new Subject();
-                   $attributes->subject_name=$data['course_name'][$key];
-                   $attributes->coursename=$data['subject'][$key];
+                   $attributes->subject_name=$request->course[$i];
+                   $attributes->coursename=$request->subject[$i];
 
 
                    $attributes->user_id=0;
                    $attributes->save();
-               }
 
-           }
+
+
+
+
+
         }
-        $new=Subject::get();
-        return view('admin.subjects')->with(compact('new'));
-
-    }
-
+        return redirect()->back();
+}
 public function deletecoursesubject($id)
     {
         $users=Subject::find($id);

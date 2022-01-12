@@ -3,9 +3,9 @@
 =========================================================
 * Now UI Dashboard - v1.5.0
 =========================================================
-
+{{-- 
 * Product Page: https://www.creative-tim.com/product/now-ui-dashboard
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
+* Copyright 2019 Creative Tim (http://www.creative-tim.com) --}}
 
 * Designed by www.invisionapp.com Coded by www.creative-tim.com
 
@@ -78,12 +78,12 @@ s0.parentNode.insertBefore(s1,s0);
               <p>subjects</p>
             </a>
           </li>
-          <li>
+          {{--  <li>
             <a href="./notifications.html">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Notifications</p>
             </a>
-          </li>
+          </li>  --}}
           <li class = {{ Request::is('role-register')? 'active' : '' }}>
             <a href="/role-register">
               <i class="now-ui-icons users_single-02"></i>
@@ -96,7 +96,7 @@ s0.parentNode.insertBefore(s1,s0);
               <p>Teachers List</p>
             </a>
           </li>
-          <li>
+          {{--  <li>
             <a href="./typography.html">
               <i class="now-ui-icons text_caps-small"></i>
               <p>Typography</p>
@@ -107,7 +107,7 @@ s0.parentNode.insertBefore(s1,s0);
               <i class="now-ui-icons arrows-1_cloud-download-93"></i>
               <p>Upgrade to PRO</p>
             </a>
-          </li>
+          </li>  --}}
         </ul>
       </div>
     </div>
@@ -205,7 +205,7 @@ s0.parentNode.insertBefore(s1,s0);
           <div class="copyright" id="copyright">
             &copy; <script>
               document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </script>, Designed by <a href="#" target="_blank">Invision</a>. Coded by <a href="# target="_blank">Creative Tim</a>.
           </div>
         </div>
       </footer>

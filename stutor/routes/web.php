@@ -82,7 +82,10 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/role-register', 'Admin\DashboardController@search')->name('sources-index');
     ///subject
      Route::match(['get','post'], '/add-subject', 'Admin\DashboardController@addsubject');
-      Route::match(['get','post'], '/subjects', 'Admin\DashboardController@subjects');
+      Route::get('/subjects', 'Admin\DashboardController@subjects');
+            Route::get('/subjects-postdata', 'Admin\DashboardController@datapostsubjectcourst');
+
+
     Route::get('/subject/delete/{id}', 'Admin\DashboardController@deletecoursesubject')->name('delete');
         Route::get('document/{file}', 'Admin\DashboardController@downloadcv');
 

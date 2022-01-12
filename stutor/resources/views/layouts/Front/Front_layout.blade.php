@@ -218,7 +218,7 @@ s0.parentNode.insertBefore(s1,s0);
                         </div>
                     @endif
                     <div class="row">
-                         <div class="col-lg-3 col-md-3 col-sm-12 pt-1 ">
+                         {{--  <div class="col-lg-3 col-md-3 col-sm-12 pt-1 ">
                   <select id="address" type="text" autofocus  style="border-radius:  0px;" name="address" class="js-states form-control " placeholder="Enter Address...." required autocomplete="searchphone" autofocus >
 
                                  <option  value='' selected disabled>Select Address</option>
@@ -227,8 +227,8 @@ s0.parentNode.insertBefore(s1,s0);
                             <option>nishat</option>
  <option>aliview</option>
                   </select>
-                        </div>
-                        <div class="col-lg-3 col-md-3 input-group col-sm-12 pt-1">
+                        </div>  --}}
+                        <div class="col-lg-5 col-md-5 input-group col-sm-12 pt-1">
                             <select id="city" style="border-radius:  0px;" class="js-states form-control @error('city') is-invalid @enderror"  name="city" >
   @error('city')
                                     <span class="invalid-feedback" role="alert">
@@ -775,14 +775,20 @@ s0.parentNode.insertBefore(s1,s0);
                             </select>
                         </div>
 
- <div class="col-lg-3 col-md-3 input-group col-sm-12 pt-1 ">
+ <div class="col-lg-5 col-md-5 input-group col-sm-12 pt-1 ">
                             <select id="subject" style="border-radius:  0px;" class="js-states form-control"  name="subject_name"  >
 
                                <option value="" selected disabled>Select Subject</option>
-<option value="Maths,English,Islamiat
-">   Maths,English,Islamiat
+<option value="Maths
+"> Maths
+
+
+<option value="English
+"> English
 </option>
-<option> English
+<option> Urdu
+</option>
+<option> Computer
 </option>
 <option> ITC
 </option>
