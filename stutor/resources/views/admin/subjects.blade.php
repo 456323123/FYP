@@ -33,7 +33,7 @@ admin-dashboard
         <input type="text" style="width:200px; height:40px;"    id="course_name" name="subject[]" placeholder="course name"/>
 
   
-        <a href="javascript:void(0)" class="new btn btn-danger" title="Add field"> Add</a>
+        <button href="javascript:void(0)" class="new btn btn-danger" title="Add field"> Add</button>
 
     </div>
 </div>

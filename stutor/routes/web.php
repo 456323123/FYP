@@ -90,6 +90,7 @@ Route::group(['middleware' => ['admin']], function () {
         Route::get('document/{file}', 'Admin\DashboardController@downloadcv');
 
 });
+Route::any('/show-student/{id}', 'UserController@showmornewedatatech')->middleware('student');
 
 //student
 Route::get('password/chanage', 'ChangePasswordController@student')->middleware('student');

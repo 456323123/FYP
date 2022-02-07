@@ -644,8 +644,6 @@
                  <br>
 
 
-
-
 <a href="/show-teachers/{{ $todo->id }}" class="ml-1  button button2 float-right " style=""> view</a>
 
                 </li>@else

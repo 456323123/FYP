@@ -76,7 +76,7 @@
                         <td>{{ $Appointment->created_at}}</td>
 
   <td> <a href="#" title="view Detail"><i class="fas fa-eye"> &nbsp;</i></a>
-                       <a href="{{url('/show-teachers/'.$id.'/?$encoded_message='.$encoded_message)}}" target="_blank" ><i class="far fa-comment-dots"></i>&nbsp;</a>
+                       <a href="{{url('/show-student/'.$id.'/?$encoded_message='.$encoded_message)}}" target="_blank" ><i class="far fa-comment-dots"></i>&nbsp;</a>
                             &nbsp;<i class="far fa-trash-alt"></i>
                         </i>
                     </td>

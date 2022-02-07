@@ -39,7 +39,7 @@
   </button>
 </div>
 @endif
-                <h3 class="card-title">Patient Appointments</h3>
+                <h3 class="card-title">Show Receive chat</h3>
 {{--  <a href="{{ url('add/new/subject') }}" class="button button2 float-right" style="width: 150px; display:inline-block">Patient Appointments</a>  --}}
               </div>
               <!-- /.card-header -->

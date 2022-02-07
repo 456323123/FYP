@@ -145,6 +145,35 @@ return redirect()->back()->with('status','your Response has been sent');
     }
 
 
+    public function showmornewedatatech(Request $request,$id)
+    {
+
+        $todo = User::find($id);
+        if($request->isMethod('post'))
+        {
+            $data=$request->all();
+                     //  echo "<pre>"; print_r($data);die;
+// echo $id;
+// echo $todo->name;
+// echo "<br>";
+// echo Auth::user()->name;
+// echo Auth::user()->id;
+
+$responses=new Response;
+$responses->sender_id=Auth::user()->id;
+$responses->receiver_id=$id;
+$responses->message=$data['message'];
+$responses->seen=0;
+$responses->save();
+return redirect()->back()->with('status','your Response has been sent');
+        }
+
+        return view('showmore')->with('todos', $todo);
+
+    }
+
+
+
   public function Responsechat()
 
      {

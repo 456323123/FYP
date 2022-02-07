@@ -8,7 +8,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3  mb-3 d-flex" style="background: #232629; padding:4px;">
         <div class="image">
-             <img src="{{  asset('uploads/avatars/'.Auth::user()->avatar) }}" style="width:32px; height:32px; position:absolute; margine-top:-10px; left:10px ;border-radius:50%">
+             <img src="{{  asset('uploads/avatars/'.Auth::user()->avatar ?? '') }}" style="width:32px; height:32px; position:absolute; margine-top:-10px; left:10px ;border-radius:50%">
         </div>
         <div class="info">
           <a  class="d-block" style="margin-left: 25px;">{{ ucwords (Auth::user()->name )}}</a>
